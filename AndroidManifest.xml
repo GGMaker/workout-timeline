@@ -9,9 +9,24 @@
 
     <application
         android:allowBackup="true"
+        android:name="com.orm.SugarApp"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data android:name="DATABASE" android:value="workout_timeline.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.sourceforge.workout_timeline.models" />
+
+        <activity
+            android:name="com.sourceforge.workout_timeline.WorkoutTimeLineActivity"
+            android:icon="@drawable/dumbbell_60_ic"
+            android:theme="@style/AppBaseTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

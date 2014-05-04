@@ -1,4 +1,4 @@
-package com.sourceforge.workout_timeline;
+package com.sourceforge.workout_timeline.models;
 
 import java.util.Date;
 
@@ -12,10 +12,11 @@ import com.orm.SugarRecord;
  */
 public class WorkoutSet extends SugarRecord<WorkoutSet> {
 
-	String muscle;
-	String exercise;
-	String reps;
-	Date posted_date;
+	public String muscle;
+	public String exercise;
+	public String weight;
+	public String reps;
+	public Date posted_date;
 
 	public WorkoutSet(Context ctx) {
 		super(ctx);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sourceforge.workout_timeline;
+package com.sourceforge.workout_timeline.models;
 
 /**
  * @author amro

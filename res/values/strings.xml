@@ -2,4 +2,11 @@
 
     <string name="app_name">Workout Timeline</string>
 
+    <string name="timeline_image_desc">timeline image desc</string>
+
+    <string name="timeline_excercise_name"> Excercise Name</string>
+    <string name="nine">9</string>
+    <string name="timeline_posted_time">2014-04-04</string>
+    <string name="timeline_wieght">50 LB</string>
+
 </resources>
