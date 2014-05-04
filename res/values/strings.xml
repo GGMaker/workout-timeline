@@ -8,5 +8,7 @@
     <string name="nine">9</string>
     <string name="timeline_posted_time">2014-04-04</string>
     <string name="timeline_wieght">50 LB</string>
+    <string name="timeline_add_menu_item">Add</string>
+    <string name="settings">Settings</string>
 
 </resources>

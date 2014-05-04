@@ -9,6 +9,8 @@ package com.sourceforge.workout_timeline.models;
  */
 public enum Exercise {
 
+	// Chest Exercises
+	
 	FLAT_BARBELL("Flat Barbell ","Long Description","imageURI",  new Muscle[] {Muscle.CHEST}),
 	DUMBBELL_BENCH_PRESS("Dumbbell Bench Press","Long Description","imageURI", new Muscle[] {Muscle.CHEST}),
 	INCLINE_BARBELL("Incline Barbell","Long Description", "imageURI", new Muscle[]{Muscle.CHEST}),
@@ -23,7 +25,24 @@ public enum Exercise {
 	INCLINE_DUMBBELL_FLYES("Incline Dumbbell Flyes","Long Description", "imageURI", new Muscle[]{Muscle.CHEST}),
 	DECLINE_DUMBBELL_FLYES("Decline Dumbbell Flyes","Long Description", "imageURI", new Muscle[]{Muscle.CHEST}),
 	PEC_DECK_MACHINE("Pec Deck Machine","Long Description", "imageURI", new Muscle[]{Muscle.CHEST}),
-	CABLE_CROSS_OVER("Cable Crossovers/Cable Flyes","Long Description", "imageURI", new Muscle[]{Muscle.CHEST});
+	CABLE_CROSS_OVER("Cable Crossovers/Cable Flyes","Long Description", "imageURI", new Muscle[]{Muscle.CHEST}),
+
+	
+        //	A List Of The Best Back Exercises
+
+	PULL_UPS("Pull-Ups", "Long Desc","imageURI",null),
+	CHIN_UPS("Chin-Ups","Long Desc","imageURI",null),
+	LAT_PULL_DOWNS("Lat Pull Downs","Long Desc", "imageURI",null),
+	BENT_OVER_BARBELL("Bent Over Barbell ", "Long Desc","imageURI", null),
+	DUMBBELL_ROWS("Dumbbell Rows", "Long Desc","imageURI",null),
+	T_BAR("T-Bar Rows","Long Desc","imageURI",null),
+	SEATED_CABLE_ROWS("Seated Cable Rows", "Long Desc","imageURI",null),
+	CHEST_SUPPORTED_BARBELL("Chest Supported Barbell", "Long Desc","imageURI",null),
+	DUMBELL_ROWS("Dumbbell Rows", "Long Desc","imageURI", null),
+	CHEST_SUPPORTED_MACHINE_ROWS("Chest Supported Machine Rows","Long Desc","imageURI",null),
+	INVERTED_ROWS("Inverted Rows","Long Rows","imageURI",null);
+	
+	
 	
 	private String shortDesc;
 	private String longDesc;
@@ -55,21 +74,7 @@ public enum Exercise {
 	}
 	
 	
-//
-//	A List Of The Best Back Exercises
-//
-//	Pull-Ups
-//	Chin-Ups
-//	Lat Pull-Downs
-//	Bent Over Barbell or 
-//	Dumbbell Rows
-//	T-Bar Rows
-//	Seated Cable Rows
-//	Chest Supported Barbell or 
-//	Dumbbell Rows
-//	Chest Supported Machine Rows
-//	Inverted Rows
-//	Barbell, Dumbbell or Machine Shrugs
+
 //
 //	A List Of The Best Shoulder Exercises
 //

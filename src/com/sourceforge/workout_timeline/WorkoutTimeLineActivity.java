@@ -2,18 +2,22 @@ package com.sourceforge.workout_timeline;
 
 import java.util.List;
 
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import com.sourceforge.workout_timeline.models.Exercise;
 import com.sourceforge.workout_timeline.models.Muscle;
 import com.sourceforge.workout_timeline.models.WorkoutSet;
-
-import android.app.ListActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.sourceforge.workouttimeline.R;
 
 public class WorkoutTimeLineActivity extends ListActivity {
 
 	private TimeLineAdapter adapter_;
+	private static final String TAG = "Workout-timeline";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,15 @@ public class WorkoutTimeLineActivity extends ListActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
+
 		// getMenuInflater().inflate(R.menu.workout_time_line, menu);
-		return true;
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.activity_workout_timeline_menu, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	public void onAdd(){
+		Log.i(TAG, "Add Item pressed");
 	}
 
 	@Override
