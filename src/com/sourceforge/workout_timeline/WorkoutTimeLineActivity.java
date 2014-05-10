@@ -2,6 +2,7 @@ package com.sourceforge.workout_timeline;
 
 import java.util.List;
 
+import android.app.FragmentManager;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.sourceforge.workout_timeline.fragments.AddUpdateWorkoutSetFragment;
 import com.sourceforge.workout_timeline.models.Exercise;
 import com.sourceforge.workout_timeline.models.Muscle;
 import com.sourceforge.workout_timeline.models.WorkoutSet;
@@ -38,6 +40,13 @@ public class WorkoutTimeLineActivity extends ListActivity {
 
 	}
 
+	public void onAdd(MenuItem item) {
+		Log.e(TAG, "OnAdd is Clicked");
+		FragmentManager manager = getFragmentManager();
+		AddUpdateWorkoutSetFragment dialog = new AddUpdateWorkoutSetFragment();
+		dialog.show(manager, "ADD_UPDATE_WORKOUT_SET");
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -45,12 +54,8 @@ public class WorkoutTimeLineActivity extends ListActivity {
 
 		// getMenuInflater().inflate(R.menu.workout_time_line, menu);
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.activity_workout_timeline_menu, menu);
-	    return super.onCreateOptionsMenu(menu);
-	}
-	
-	public void onAdd(){
-		Log.i(TAG, "Add Item pressed");
+		inflater.inflate(R.menu.activity_workout_timeline_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override

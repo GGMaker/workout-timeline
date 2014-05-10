@@ -40,10 +40,59 @@ public enum Exercise {
 	CHEST_SUPPORTED_BARBELL("Chest Supported Barbell", "Long Desc","imageURI",null),
 	DUMBELL_ROWS("Dumbbell Rows", "Long Desc","imageURI", null),
 	CHEST_SUPPORTED_MACHINE_ROWS("Chest Supported Machine Rows","Long Desc","imageURI",null),
-	INVERTED_ROWS("Inverted Rows","Long Rows","imageURI",null);
+	INVERTED_ROWS("Inverted Rows","Long Rows","imageURI",null),
 	
+//	A List Of The Best Shoulder Exercises
+//
+	SEATED_OVERHEAD_BARBELL("Seated Overhead Barbell","Long Dex", "imageURI",null),
+	DUMBBELL_PRESS("Dumbbell Press","Long Dex", "imageURI",null),
+	STANDING_OVERHEAD_BARBELL("Standing Overhead Barbell","Long Dex", "imageURI",null),
+	OVERHEAD_MACHINE_PRESS("Overhead Machine Press" ,"Long Dex", "imageURI",null),
+	ARNOLD_PRESS_BARBELL("Arnold Press Barbell","Long Dex", "imageURI",null),
+	ARNOLD_PRESS_DUMBBELL("Arnold Press Dumbbell","Long Dex", "imageURI",null),
+	MACHINE_UPRIGHT_ROWS("Machine Upright Rows","Long Dex", "imageURI",null),
+//	A List Of The Best Quadriceps Exercises
 	
-	
+	DUMBBELL_SQUATS("Dumbbell Squats", "Long Desc","imageURI", null),
+	BARBELL_SQUATS("Barbell Squats", "Long Desc","imageURI", null),
+	DUMBBELL_FRONT_SQUATS("Dumbbell Front Squats", "Long Desc","imageURI", null),
+	BARBELL_FRONT_SQUATS("Barbell Front Squats", "Long Desc","imageURI", null),
+	DUMBBELL_SPLIT_SQUATS("Dumbbell Split Squats", "Long Desc","imageURI", null),
+	BARBELL_SPLIT_SQUATS("Barbell Split Squats", "Long Desc","imageURI", null),
+	DUMBBELL_LUNGES_SQUATS("Dumbbell Lunges Squats", "Long Desc","imageURI", null),
+	BARBELL_LUNGES_SQUATS("Barbell Lunges Squats", "Long Desc","imageURI", null),
+	DUMBBELL_STEP_UPS_SQUATS("Dumbbell Step Ups", "Long Desc","imageURI", null),
+	BARBELL_STEP_UPS_SQUATS("Barbell Step Ups", "Long Desc","imageURI", null),
+	LEG_PRESS("Leg Press", "Long Desc","imageURI", null),
+	MACHINE_SQUAT("Machine Squat", "Long Desc","imageURI", null),
+	HACK_SQUAT("Hack Squat", "Long Desc","imageURI", null),
+	LEG_EXTENSIONS("Leg Extensions", "Long Desc","imageURI", null),
+
+//	A List Of The Best Biceps Exercises
+
+	STANDING_BARBELL("Standing Barbell", "Long Desc","imageURI", null),
+	STANDING_DUMBBELL_CURLS("Standing Dumbbell Curls", "Long Desc","imageURI", null),
+	BARBELL_PREACHER_CURLS("Barbell Preacher Curls", "Long Desc","imageURI", null),
+	DUMBBELL_PREACHER_CURLS("Dumbbell Preacher Curls", "Long Desc","imageURI", null),
+	SEATED_DUMBBELL_CURLS("Seated Dumbbell Curls", "Long Desc","imageURI", null),
+	INCLINE_DUMBBELL_CURLS("Incline Dumbbell Curls", "Long Desc","imageURI", null),
+	HAMMER_CURLS("HAmmer Curls", "Long Desc","imageURI", null),
+	CONCENTRATION_CURLS("Concentration Curls", "Long Desc","imageURI", null),
+	CABEL_CURLS("Cabel Curls", "Long Desc","imageURI", null),
+	BICEPS_CURL_MACHINE("Bisecps Curl Machine", "Long Desc","imageURI", null),
+
+//	A List Of The Best Triceps Exercises
+	DIPS("Dip", "Long Desc","imageURI", null),
+	BENCH_DIPS("Bench Dips", "Long Desc","imageURI", null),
+	FLAT_CLOSE_GRIP_BENCH_PRESS("Flat Close Grip Bench Press", "Long Desc","imageURI", null),
+	DECLINE_CLOSE_GRIP_BENCH_PRESS("Decline Close Grip Bench Press", "Long Desc","imageURI", null),
+	CLOSE_GRIP_PUSH_UPS("Close Grip Push Ups", "Long Desc","imageURI", null),
+	LAYING_BARBELL("Laying Barbell", "Long Desc","imageURI", null),
+	DUMBBELL_TRICEPS_EXT("Dumbbell Triceps Extensions", "Long Desc","imageURI", null),
+	SKULL_CRUSHERS("Skull Crushers", "Long Desc","imageURI", null),
+	CABLE_PRESS_DOWN("Cable Press-Downs", "Long Desc","imageURI", null);
+
+
 	private String shortDesc;
 	private String longDesc;
 	private String imageUri;
@@ -75,40 +124,6 @@ public enum Exercise {
 	
 	
 
-//
-//	A List Of The Best Shoulder Exercises
-//
-//	Seated Overhead Barbell or 
-//	Dumbbell Press
-//	Standing Overhead Barbell or 
-//	Dumbbell Press
-//	Overhead Machine Press
-//	Arnold Press
-//	Barbell, Dumbbell or 
-//	Machine Upright Rows
-//	Dumbbell, Cable or 
-//	Machine Lateral Raises
-//	Dumbbell, Cable or 
-//	Machine Front Raises
-//	Barbell, Dumbbell, or 
-//	Machine Rear Delt Rows, Raises or Flyes
-//
-//	A List Of The Best Quadriceps Exercises
-//
-//	Barbell or 
-//	Dumbbell Squats
-//	Barbell or 
-//	Dumbbell Front Squats
-//	Barbell or 
-//	Dumbbell Split Squats
-//	Barbell or 
-//	Dumbbell Lunges
-//	Barbell or 
-//	Dumbbell Step-Ups
-//	Leg Press
-//	Machine Squat/Hack Squat
-//	Leg Extensions
-//
 //	A List Of The Best Hamstring Exercises
 //
 //	Barbell or 
@@ -124,32 +139,6 @@ public enum Exercise {
 //	Leg Curls
 //	(Compound hamstring exercises also target a significant portion of the lower body/posterior chain.)
 //
-//	A List Of The Best Biceps Exercises
-//
-//	Standing Barbell or 
-//	Dumbbell Curls
-//	Barbell or 
-//	Dumbbell Preacher Curls
-//	Seated Dumbbell Curls
-//	Incline Dumbbell Curls
-//	Hammer Curls
-//	Concentration Curls
-//	Cable Curls
-//	Biceps Curl Machine
-//
-//	A List Of The Best Triceps Exercises
-//
-//	Dips (on parallel bars, elbows close to body, without forward lean)
-//	Flat Close Grip Bench Press
-//	Decline Close Grip Bench Press
-//	Close Grip Push-Ups
-//	Laying Barbell or 
-//	Dumbbell Triceps Extensions
-//	Skull Crushers
-//	Overhead Barbell or 
-//	Dumbbell Triceps Extensions
-//	Cable Press-Downs
-//	Bench Dips
 
 
 }

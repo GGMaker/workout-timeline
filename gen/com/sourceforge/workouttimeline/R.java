@@ -8,6 +8,10 @@
 package com.sourceforge.workouttimeline;
 
 public final class R {
+    public static final class array {
+        public static final int muscle_group=0x7f050000;
+        public static final int number=0x7f050001;
+    }
     public static final class attr {
     }
     public static final class drawable {
@@ -18,18 +22,30 @@ public final class R {
         public static final int plus_icon_40=0x7f020004;
     }
     public static final class id {
-        public static final int app_settings_menu_item=0x7f070005;
-        public static final int timeline_add_menu_item=0x7f070004;
-        public static final int timeline_excercise=0x7f070000;
-        public static final int timeline_reps=0x7f070001;
-        public static final int timeline_time=0x7f070002;
-        public static final int timeline_weight=0x7f070003;
+        public static final int app_settings_menu_item=0x7f080010;
+        public static final int dialog_exercise=0x7f080006;
+        public static final int dialog_muscle_group=0x7f080004;
+        public static final int dialog_reps=0x7f08000c;
+        public static final int dialog_weight=0x7f080008;
+        public static final int execercise_value=0x7f080007;
+        public static final int muscle_value=0x7f080005;
+        public static final int reps_10_value=0x7f08000d;
+        public static final int reps_1_value=0x7f08000e;
+        public static final int timeline_add_menu_item=0x7f08000f;
+        public static final int timeline_excercise=0x7f080000;
+        public static final int timeline_reps=0x7f080001;
+        public static final int timeline_time=0x7f080002;
+        public static final int timeline_weight=0x7f080003;
+        public static final int weight_100_value=0x7f080009;
+        public static final int weight_10_value=0x7f08000a;
+        public static final int weight_1_value=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_workout_timeline_item=0x7f030000;
+        public static final int dialog_add_update_workout_set=0x7f030001;
     }
     public static final class menu {
-        public static final int activity_workout_timeline_menu=0x7f060000;
+        public static final int activity_workout_timeline_menu=0x7f070000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -63,10 +79,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f060001;
     }
 }
