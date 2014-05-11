@@ -1,5 +1,6 @@
 package com.sourceforge.workout_timeline;
 
+import java.util.Collections;
 import java.util.List;
 
 import android.app.FragmentManager;
@@ -9,41 +10,59 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.sourceforge.workout_timeline.fragments.AddUpdateWorkoutSetFragment;
-import com.sourceforge.workout_timeline.models.Exercise;
-import com.sourceforge.workout_timeline.models.Muscle;
 import com.sourceforge.workout_timeline.models.WorkoutSet;
 import com.sourceforge.workouttimeline.R;
 
 public class WorkoutTimeLineActivity extends ListActivity {
 
-	private TimeLineAdapter adapter_;
+	private TimeLineAdapter timeLine;
 	private static final String TAG = "Workout-timeline";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		WorkoutSet set = new WorkoutSet(this);
-		set.exercise = Exercise.CABLE_CROSS_OVER.getShortDesc();
-		set.muscle = Muscle.CHEST.name();
-		set.reps = "7";
-		set.weight = String.valueOf("25");
-		set.save();
 
 		List<WorkoutSet> data = WorkoutSet.listAll(WorkoutSet.class);
+		Collections.sort(data);
 
-		adapter_ = new TimeLineAdapter(this, data);
+		timeLine = new TimeLineAdapter(this, data);
 
-		setListAdapter(adapter_);
+		setListAdapter(timeLine);
+
+		getListView().setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				onUpdate(null);
+			}
+		});
 
 		super.onCreate(savedInstanceState);
 
 	}
 
-	public void onAdd(MenuItem item) {
+	public void onAdd(MenuItem item) throws CloneNotSupportedException {
 		Log.e(TAG, "OnAdd is Clicked");
 		FragmentManager manager = getFragmentManager();
+		
+		WorkoutSet lastSet = (timeLine.getCount() > 0) ? (WorkoutSet) WorkoutSet.clone((WorkoutSet) timeLine.getItem(0)) : WorkoutSet.createWorkoutSet(this);
 		AddUpdateWorkoutSetFragment dialog = new AddUpdateWorkoutSetFragment();
+		dialog.setAdd(true);
+		dialog.setTimeline(timeLine);
+		dialog.setWorkoutSet(lastSet);
+		dialog.show(manager, "ADD_WORKOUT_SET");
+	}
+
+	public void onUpdate(MenuItem item) {
+		Log.e(TAG, "onUpdate is Clicked");
+		FragmentManager manager = getFragmentManager();
+		AddUpdateWorkoutSetFragment dialog = new AddUpdateWorkoutSetFragment();
+		dialog.setWorkoutSet((WorkoutSet) timeLine.getItem(0));
 		dialog.show(manager, "ADD_UPDATE_WORKOUT_SET");
 	}
 

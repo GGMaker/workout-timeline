@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:prompt="@string/nine"
-            android:entries="@array/muscle_group"
             android:layout_weight="2"
            />
     </LinearLayout>
@@ -123,12 +122,14 @@
         android:orientation="horizontal" >
 
         <Button
+            android:id="@+id/dialog_forgetit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Forget it" />
 
         <Button
+            android:id="@+id/dialog_done_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

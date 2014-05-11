@@ -3,7 +3,10 @@
  */
 package com.sourceforge.workout_timeline;
 
+import java.util.Date;
 import java.util.List;
+
+import org.ocpsoft.pretty.time.PrettyTime;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -24,10 +27,15 @@ public class TimeLineAdapter extends BaseAdapter {
 	private List<WorkoutSet> workoutList_;
 	private LayoutInflater mInflater;
 	private Context context;
+	private static PrettyTime PT = new PrettyTime();
 
 	TimeLineAdapter(Context argContext, List<WorkoutSet> argList) {
 		workoutList_ = argList;
 		context = argContext;
+	}
+
+	public void addWorkoutSet(WorkoutSet value) {
+		workoutList_.add(0, value);
 	}
 
 	@Override
@@ -45,7 +53,7 @@ public class TimeLineAdapter extends BaseAdapter {
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return workoutList_.get(position).getId();
 	}
 
 	@Override
@@ -68,15 +76,19 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	private void bindView(int position, View v) {
 		// TODO Auto-generated method stub
+		TextView muscle = (TextView) v.findViewById(R.id.timeline_muscle);
 		TextView excercise = (TextView) v.findViewById(R.id.timeline_excercise);
 		TextView reps = (TextView) v.findViewById(R.id.timeline_reps);
-		TextView time = (TextView) v.findViewById(R.id.timeline_time);
+		TextView time = (TextView) v.findViewById(R.id.timeline_posted_time);
 		TextView weight = (TextView) v.findViewById(R.id.timeline_weight);
 
 		WorkoutSet set = (WorkoutSet) getItem(position);
-		excercise.setText(set.exercise);
+		muscle.setText(set.getMuscle().getShortDesc());
+		excercise.setText(set.getExercise().getShortDesc());
 		reps.setText(set.reps);
-		time.setText("2014-04-02");
+		if(set.posted_date != null){
+		time.setText(PT.format(new Date(set.posted_date.getTime())));
+		}
 		weight.setText(set.weight);
 
 	}
