@@ -1,8 +1,5 @@
 package com.sourceforge.workout_timeline.models;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import android.content.Context;
 
 import com.orm.SugarRecord;
@@ -83,32 +80,20 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 	public int[] getWeight() {
 		int[] result = new int[3];
 		int number = weight;
-		result[0] = number % 100;
-		if (result[0] != 0) {
-			number -= 100;
-		}
-		result[1] = number % 10;
-		if (result[1] != 0) {
-			number -= 10;
-		}
-		result[2] = number % 1;
-		if (result[1] != 0) {
-			number -= 1;
-		}
+		result[0] = (number >= 100)? number / 100 : 0;
+		number %= 100;
+		result[1] = (number >= 10)? number / 10 : 0;
+		number %= 10;
+		result[2] = number;
 		return result;
 	}
 
 	public int[] getReps() {
 		int[] result = new int[2];
-		int number = weight;
-		result[0] = number % 10;
-		if (result[1] != 0) {
-			number -= 10;
-		}
-		result[1] = number % 1;
-		if (result[1] != 0) {
-			number -= 1;
-		}
+		int number = reps;
+		result[0] = (number >= 10)? number / 10 : 0;
+		number %= 10;
+		result[1] = number;
 		return result;
 	}
 
@@ -119,7 +104,7 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 		}
 		if (units != 0) {
 			result += units;
-		}	
+		}
 		reps = result;
 		return result;
 	}

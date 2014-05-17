@@ -38,7 +38,7 @@ public class WorkoutTimeLineActivity extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				onUpdate(null);
+				onUpdate((WorkoutSet)timeLine.getItem(position));
 			}
 		});
 
@@ -58,12 +58,13 @@ public class WorkoutTimeLineActivity extends ListActivity {
 		dialog.show(manager, "ADD_WORKOUT_SET");
 	}
 
-	public void onUpdate(MenuItem item) {
+	public void onUpdate(WorkoutSet argWorkoutSet) {
 		Log.e(TAG, "onUpdate is Clicked");
 		FragmentManager manager = getFragmentManager();
 		AddUpdateWorkoutSetFragment dialog = new AddUpdateWorkoutSetFragment();
-		dialog.setWorkoutSet((WorkoutSet) timeLine.getItem(0));
-		dialog.show(manager, "ADD_UPDATE_WORKOUT_SET");
+		dialog.setTimeline(timeLine);
+		dialog.setWorkoutSet(argWorkoutSet);
+		dialog.show(manager, "UPDATE_WORKOUT_SET");
 	}
 
 	@Override

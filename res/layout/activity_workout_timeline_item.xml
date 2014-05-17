@@ -11,7 +11,7 @@
         android:layout_margin="5dp"
         android:contentDescription="Excercise"
         android:drawablePadding="5dp"
-        android:src="@drawable/dumbbell_60_ic" />
+        android:src="@drawable/dumbbell_ic_72" />
 
     <TextView
         android:id="@+id/timeline_excercise"

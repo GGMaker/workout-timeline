@@ -3,12 +3,9 @@
  */
 package com.sourceforge.workout_timeline.fragments;
 
-import javax.xml.datatype.Duration;
-
 import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +38,7 @@ public class AddUpdateWorkoutSetFragment extends DialogFragment {
 	private Spinner reps10;
 	private Spinner reps1;
 	private WorkoutSet workoutSet;
+	private boolean preSelectedExecrcise = false;
 	private boolean isAdd;
 	private TimeLineAdapter timeLine;
 
@@ -59,19 +57,20 @@ public class AddUpdateWorkoutSetFragment extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stubdone.getId() == which){
-				if (isAdd) {
-					
+
 					workoutSet.muscle = ((Muscle)muscleSpnr.getSelectedItem()).name();
 					workoutSet.exercise = ((Exercise)execrciseSpnr.getSelectedItem()).name();
 					workoutSet.setReps((Integer)reps10.getSelectedItem(), (Integer)reps1.getSelectedItem());
 					workoutSet.setWeight((Integer)weight100.getSelectedItem(), (Integer)weight10.getSelectedItem(), (Integer)weight1.getSelectedItem());
 
 					workoutSet.save();
+				if (isAdd) {
+					
 					timeLine.addWorkoutSet(workoutSet);
-					timeLine.notifyDataSetChanged();
 				}
+				timeLine.notifyDataSetChanged();
 				Toast.makeText(getActivity(), "New Workout Set Added",
-						Toast.LENGTH_SHORT);
+						Toast.LENGTH_LONG);
 				dismiss();
 			}
 		});
@@ -86,66 +85,70 @@ public class AddUpdateWorkoutSetFragment extends DialogFragment {
 
 		});
 		muscleSpnr = (Spinner) v.findViewById(R.id.muscle_value);
-		ArrayAdapter<Muscle> muscleAdp = new ArrayAdapter<Muscle>(
-				getActivity(), android.R.layout.simple_spinner_item,
-				Muscle.values());
+		ArrayAdapter<Muscle> muscleAdp = new ArrayAdapter<Muscle>( getActivity(), android.R.layout.simple_spinner_item, Muscle.values());
 		muscleSpnr.setAdapter(muscleAdp);
-		muscleSpnr
-				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-					@Override
-					public void onItemSelected(AdapterView<?> parent,
-							View view, int position, long id) {
-						Muscle muscle = (Muscle) parent.getAdapter().getItem(
-								position);
-						ArrayAdapter<Exercise> exerciseAdp = new ArrayAdapter<Exercise>(
-								getActivity(),
-								android.R.layout.simple_spinner_item, Exercise
-										.getExercisesByMuscleGroup(muscle
-												.name()));
-						execrciseSpnr.setAdapter(exerciseAdp);
 
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-						// TODO Auto-generated method stub
-
-					}
-				});
+		muscleSpnr.setSelection(muscleAdp.getPosition(workoutSet.getMuscle()));
 
 		execrciseSpnr = (Spinner) v.findViewById(R.id.execercise_value);
-		ArrayAdapter<Exercise> exerciseAdp = new ArrayAdapter<Exercise>(
-				getActivity(), android.R.layout.simple_spinner_item,
-				Exercise.getExercisesByMuscleGroup(workoutSet.muscle));
+		ArrayAdapter<Exercise> exerciseAdp = new ArrayAdapter<Exercise>( getActivity(), android.R.layout.simple_spinner_item, Exercise.getExercisesByMuscleGroup(workoutSet.muscle));
 		execrciseSpnr.setAdapter(exerciseAdp);
-		execrciseSpnr.setSelection(exerciseAdp.getPosition(workoutSet
-				.getExercise()));
+		if(workoutSet.getExercise() != null){
+		execrciseSpnr.setSelection(exerciseAdp.getPosition(workoutSet.getExercise()));
+		preSelectedExecrcise = true;
+		}
+		
+		int[] weightParts = workoutSet.getWeight();
 
 		weight100 = (Spinner) v.findViewById(R.id.weight_100_value);
-		weight100.setAdapter(createArrayAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2,
-						3, 4, 5, 6, 7, 8, 9 }));
+		ArrayAdapter<Integer> weight100Adp = createArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		weight100.setAdapter(weight100Adp);
+		weight100.setSelection(weight100Adp.getPosition(weightParts[0]));
 
+		ArrayAdapter<Integer> weight10Adp = createArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 		weight10 = (Spinner) v.findViewById(R.id.weight_10_value);
-		weight10.setAdapter(createArrayAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2,
-						3, 4, 5, 6, 7, 8, 9 }));
+		weight10.setAdapter(weight10Adp);
+		weight10.setSelection(weight10Adp.getPosition(weightParts[1]));
 
 		weight1 = (Spinner) v.findViewById(R.id.weight_1_value);
-		weight1.setAdapter(createArrayAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2,
-						3, 4, 5, 6, 7, 8, 9 }));
+		ArrayAdapter<Integer> weight1Adp = createArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		weight1.setAdapter(weight1Adp);
+		weight1.setSelection(weight10Adp.getPosition(weightParts[2]));
 
+		int[] repsParts= workoutSet.getReps();
 		reps10 = (Spinner) v.findViewById(R.id.reps_10_value);
-		reps10.setAdapter(createArrayAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2,
-						3, 4, 5, 6, 7, 8, 9 }));
+		ArrayAdapter<Integer> reps10Adp = createArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		reps10.setAdapter(reps10Adp);
+		reps10.setSelection(reps10Adp.getPosition(repsParts[0]));
 
 		reps1 = (Spinner) v.findViewById(R.id.reps_1_value);
-		reps1.setAdapter(createArrayAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2,
-						3, 4, 5, 6, 7, 8, 9 }));
+		ArrayAdapter<Integer> reps1Adp = createArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		reps1.setAdapter(reps1Adp);
+		reps1.setSelection(reps1Adp.getPosition(repsParts[1]));
 
+		
+		muscleSpnr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				if(preSelectedExecrcise){
+					// The execrcise is pre selected so igonre the event this time
+					preSelectedExecrcise = false;
+				}else{
+				Muscle muscle = (Muscle) parent.getAdapter().getItem( position);
+				ArrayAdapter<Exercise> exerciseAdp = new ArrayAdapter<Exercise>( getActivity(), android.R.layout.simple_spinner_item, Exercise.getExercisesByMuscleGroup(muscle .name()));
+				execrciseSpnr.setSelection(exerciseAdp.getPosition(workoutSet.getExercise()));
+				execrciseSpnr.setAdapter(exerciseAdp);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
 		return v;
 	}
 

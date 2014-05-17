@@ -10,7 +10,7 @@ import java.util.List;
  * @author amro
  *
  */
-public enum Exercise {
+public enum Exercise{
 
 	// Chest Exercises
 	
@@ -138,7 +138,7 @@ public enum Exercise {
 	}
 	
 	
-	public static  List<Exercise> getExercisesByMuscleGroup(String argMuscle){
+	public static  Exercise[] getExercisesByMuscleGroup(String argMuscle){
 		List<Exercise> result = new ArrayList<Exercise>();
 		for(Exercise exercise : Exercise.values() ){
 			Muscle[] exerciseMuscles = exercise.muscleGroup;
@@ -148,7 +148,8 @@ public enum Exercise {
 				}
 			}
 		}
-		return result;
+		Exercise[] arrayEx  = new Exercise[result.size()]; 
+		return result.toArray(arrayEx);
 	}
 	
 
