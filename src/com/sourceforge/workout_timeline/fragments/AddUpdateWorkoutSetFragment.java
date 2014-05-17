@@ -63,7 +63,8 @@ public class AddUpdateWorkoutSetFragment extends DialogFragment {
 					
 					workoutSet.muscle = ((Muscle)muscleSpnr.getSelectedItem()).name();
 					workoutSet.exercise = ((Exercise)execrciseSpnr.getSelectedItem()).name();
-
+					workoutSet.setReps((Integer)reps10.getSelectedItem(), (Integer)reps1.getSelectedItem());
+					workoutSet.setWeight((Integer)weight100.getSelectedItem(), (Integer)weight10.getSelectedItem(), (Integer)weight1.getSelectedItem());
 
 					workoutSet.save();
 					timeLine.addWorkoutSet(workoutSet);

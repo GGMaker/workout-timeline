@@ -85,11 +85,9 @@ public class TimeLineAdapter extends BaseAdapter {
 		WorkoutSet set = (WorkoutSet) getItem(position);
 		muscle.setText(set.getMuscle().getShortDesc());
 		excercise.setText(set.getExercise().getShortDesc());
-		reps.setText(set.reps);
-		if(set.posted_date != null){
-		time.setText(PT.format(new Date(set.posted_date.getTime())));
-		}
-		weight.setText(set.weight);
+		reps.setText(String.valueOf(set.reps));
+			time.setText(PT.format(new Date(set.posted_date)));
+		weight.setText(String.valueOf(set.weight)+" LBs");
 
 	}
 

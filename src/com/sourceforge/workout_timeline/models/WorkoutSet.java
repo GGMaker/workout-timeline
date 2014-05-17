@@ -1,7 +1,7 @@
 package com.sourceforge.workout_timeline.models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
 
 import android.content.Context;
 
@@ -16,9 +16,9 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 
 	public String muscle;
 	public String exercise;
-	public Integer weight;
-	public Integer reps;
-	public Timestamp posted_date;
+	public int weight;
+	public int reps;
+	public long posted_date;
 	public Context ctx;
 
 	public WorkoutSet(Context ctx) {
@@ -48,7 +48,7 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 		copy.weight = weight;
 		copy.reps = reps;
 		// copy.posted_date = (Date) posted_date.clone();
-		copy.posted_date = new Timestamp(new Date().getTime());
+		copy.posted_date = System.currentTimeMillis();
 		return copy;
 	}
 
@@ -61,7 +61,7 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 		WorkoutSet w = new WorkoutSet(ctx);
 		w.muscle = Muscle.EMPTY.name();
 		w.exercise = Exercise.EMPTY.name();
-		w.posted_date = new Timestamp(new Date().getTime());
+		w.posted_date = System.currentTimeMillis();
 		return w;
 	}
 
@@ -76,12 +76,13 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 		if (units != 0) {
 			result += units;
 		}
+		weight = result;
 		return result;
 	}
 
 	public int[] getWeight() {
 		int[] result = new int[3];
-		int number = weight.intValue();
+		int number = weight;
 		result[0] = number % 100;
 		if (result[0] != 0) {
 			number -= 100;
@@ -99,7 +100,7 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 
 	public int[] getReps() {
 		int[] result = new int[2];
-		int number = weight.intValue();
+		int number = weight;
 		result[0] = number % 10;
 		if (result[1] != 0) {
 			number -= 10;
@@ -118,7 +119,8 @@ public class WorkoutSet extends SugarRecord<WorkoutSet> implements
 		}
 		if (units != 0) {
 			result += units;
-		}
+		}	
+		reps = result;
 		return result;
 	}
 
