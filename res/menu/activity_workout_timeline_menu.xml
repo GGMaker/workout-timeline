@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/timeline_add_menu_item"
-        android:icon="@drawable/plus_icon_40"
+        android:icon="@android:drawable/ic_menu_add"
         android:showAsAction="always"
         android:onClick="onAdd"
         android:title="@string/timeline_add_menu_item"/>
